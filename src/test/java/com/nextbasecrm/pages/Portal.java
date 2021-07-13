@@ -56,5 +56,8 @@ public class Portal {
     @FindBy(xpath = "//div[@id='blg-post-img-3806']//button[@data-bx-vote-button='showVoteForm']")
     public WebElement voteAgainTxt;
 
+    @FindBy(xpath = "//div[@id='blg-post-img-3806']//button[.='Stop']")
+    public WebElement stopVoteForOnlyTheCreaterOfThePoll;
+
 
 }

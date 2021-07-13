@@ -5,6 +5,7 @@ import com.nextbasecrm.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.en_old.Ac;
 import org.junit.Assert;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,12 +20,15 @@ public class PollVoteFunctionaltiy_StepDef {
      */
     @When("hr user navigate to poll post for vote")
     public void hr_user_navigate_to_poll_post_for_vote() {
-        try {
+        Portal portal = new Portal();
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(portal.voteAgainTxt).perform();
+   /*     try {
             Robot robot = new Robot();
             robot.mouseWheel(5);
         } catch (AWTException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
     @When("hr user check the box that user like to vote for")
@@ -57,12 +61,15 @@ public class PollVoteFunctionaltiy_StepDef {
      */
     @And("helpdesk user navigate to poll post for vote")
     public void helpdeskUserNavigateToPollPostForVote() {
-        try {
+        Portal portal = new Portal();
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(portal.voteAgainTxt).perform();
+    /*    try {
             Robot robot = new Robot();
             robot.mouseWheel(5);
         } catch (AWTException e) {
             e.printStackTrace();
-        }
+        }*/
     }
     @And("helpdesk user check the box that user like to vote for")
     public void helpdeskUserCheckTheBoxThatUserLikeToVoteFor() {
@@ -96,16 +103,18 @@ public class PollVoteFunctionaltiy_StepDef {
      */
     @And("marketing  user navigate to poll post for vote")
     public void marketingUserNavigateToPollPostForVote() {
-        try {
+        Portal portal = new Portal();
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(portal.voteAgainTxt).perform();
+    /*    try {
           Robot robot = new Robot();
           robot.mouseWheel(5);
         } catch (AWTException e) {
             e.printStackTrace();
         }
-
+*/
 
     }
-
     @And("marketing  user check the box that user like to vote for")
     public void marketingUserCheckTheBoxThatUserLikeToVoteFor() {
         Portal portal = new Portal();
@@ -114,13 +123,11 @@ public class PollVoteFunctionaltiy_StepDef {
         }
         portal.pollVoteRadioButtonToCheck.click();
     }
-
     @And("marketing  user click on the vote button")
     public void marketingUserClickOnTheVoteButton() {
         Portal portal = new Portal();
         portal.voteButton.click();
     }
-
     @Then("marketing  user should see {string} text")
     public void marketingUserShouldSeeText(String arg0) {
         Portal portal = new Portal();
@@ -133,10 +140,35 @@ public class PollVoteFunctionaltiy_StepDef {
         Driver.closeDriver();
     }
 
+    /**
+     * Scenario:users Marketing can select an answer to vote a poll.
+     */
+    @And("marketing user click on vote again button")
+    public void marketingUserClickOnVoteAgainButton() {
+        Portal portal = new Portal();
+        portal.voteAgainTxt.click();
+    }
+    @Then("marketing user should be able to vote again")
+    public void marketingUserShouldBeAbleToVoteAgain() {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),15);
+        Portal portal = new Portal();
+        wait.until(ExpectedConditions.visibilityOf(portal.voteButton));
+        Assert.assertTrue(portal.voteButton.isEnabled());
+        Assert.assertTrue(portal.voteButton.isDisplayed());
+        Driver.closeDriver();
+    }
+    @And("marketing  user navigate to poll post the user created")
+    public void marketingUserNavigateToPollPostTheUserCreated() {
+        Portal portal = new Portal();
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(portal.voteAgainTxt).perform();
 
+    }
+    @Then("marketing user should see stop button")
+    public void marketingUserShouldSeeStopButton() {
+        Portal portal = new Portal();
+        Assert.assertTrue(portal.stopVoteForOnlyTheCreaterOfThePoll.isEnabled());
+        Assert.assertTrue(portal.stopVoteForOnlyTheCreaterOfThePoll.isDisplayed());
 
-    // note for you to remember, the poll is been creating by marketing8 user account;
-
-
-
+    }
 }
