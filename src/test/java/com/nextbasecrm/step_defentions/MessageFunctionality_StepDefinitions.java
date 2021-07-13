@@ -10,10 +10,15 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MessageFunctionality_StepDefinitions {
     Faker faker = new Faker();
     String data = faker.name().name();
+    String nameForLink = "hello";
+    String  link = "www.facebook.com";
 
     @Given("hr user is login in to the hr account")
     public void hr_user_is_login_in_to_the_hr_account() {
@@ -116,5 +121,50 @@ public class MessageFunctionality_StepDefinitions {
         Portal page = new Portal();
         Assert.assertTrue(page.messageCancelButton.isEnabled());
         page.messageCancelButton.click();
+        Driver.closeDriver();
+    }
+
+    @And("helpdesk click on link icon")
+    public void helpdeskClickOnLinkIcon() {
+        Portal page = new Portal();
+        page.AddLinkButton.click();
+    }
+
+    @And("helpdesk give a name and link")
+    public void helpdeskGiveANameAndLink() {
+        Portal page = new Portal();
+        page.linkTextBoxToGiveATextToTheLink.sendKeys(data);
+        page.linkUrlBoxToGiveAUrlForTheLink.sendKeys(link);
+    }
+
+    @And("helpdesk click on save")
+    public void helpdeskClickOnSave() {
+        Portal page = new Portal();
+        page.saveLinkAfterGivingALinkAndName.click();
+    }
+       //todo fix this problem here, for now it is using the findelement inisde the method. you need to read from pom.
+    @Then("helpdesk text should contain href attribute value that match the input")
+    public void helpdeskTextShouldContainHrefAttributeValueThatMatchTheInput() {
+
+      BrowserUtils.sleep(2);
+
+      String actualLinkValue = Driver.getDriver().findElement(By.xpath("(//div[@class='workarea-content-paddings']//div[@class='feed-post-text-block-inner-inner'])[1]/a")).getAttribute("href");
+      String expectedLinkValue =   link;
+      Assert.assertTrue(actualLinkValue.contains(expectedLinkValue));
+      Driver.closeDriver();
+    }
+
+    @And("helpdesk Type  in the Message box")
+    public void helpdeskTypeInTheMessageBox() {
+        Portal page = new Portal();
+        page.messageBox.click();
+
+
+    }
+
+    @And("helpdesk save the message")
+    public void helpdeskSaveTheMessage() {
+        Portal page = new Portal();
+        page.sendMessage.click();
     }
 }

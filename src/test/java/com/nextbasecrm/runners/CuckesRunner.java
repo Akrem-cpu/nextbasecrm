@@ -13,7 +13,8 @@ import org.junit.runner.RunWith;
         features ="src/test/resources/features",
         glue = "com/nextbasecrm/step_defentions",
         tags = "@wip",
-        plugin = "html:target/report.html"
+        plugin = "html:target/report.html",
+        dryRun =false
 
 )
 

@@ -10,7 +10,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class Nextbase_StepDefinitions {
+public class NextbaseLogin_StepDefinitions {
 
     /**
      * Scenario:  As a Helper user, I should be able to login to the app
@@ -40,7 +40,7 @@ public class Nextbase_StepDefinitions {
     }
 
     /**
-     *  Scenario:  As a Helper user, I should be able to login to the app
+     *  Scenario:  As a Hr user, I should be able to login to the app
      */
     @Given("hr user is on nextbase login page")
     public void hr_user_is_on_nextbase_login_page() {

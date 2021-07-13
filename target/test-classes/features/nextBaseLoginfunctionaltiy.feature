@@ -1,4 +1,4 @@
-@smoke
+@smoke @regression
 Feature: nextbasecrm login functionality
     User story : As a user, I should be able to login to the app
 
@@ -8,7 +8,7 @@ Feature: nextbasecrm login functionality
     And Helper user click on Login
     Then User should see in title "(62) portal"
 
-  Scenario:  As a Helper user, I should be able to login to the app
+  Scenario:  As a hr user, I should be able to login to the app
     Given hr user is on nextbase login page
     When hr User input valid Credentials
     And hr user click on Login
