@@ -8,14 +8,14 @@ Feature: As a user, I should be able to send message
     Then hr user should see the text under activity stream
 
   Scenario: marketing users  send message with ""MESSAGE"" tab
-    Given marketing user is login in to the hr account
+    Given marketing user is login in to the marketing account
     Then marketing Type "Test message" in the Message box
     And marketing user click on send
     Then marketing user should see the text under activity stream
 
 
   Scenario: helpdesk users  send message with ""MESSAGE"" tab
-    Given helpdesk user is login in to the hr account
+    Given helpdesk user is login in to the helpdesk account
     When helpdesk Type "Test message" in the Message box
     And helpdesk user click on send
     Then helpdesk user should see the text under activity stream

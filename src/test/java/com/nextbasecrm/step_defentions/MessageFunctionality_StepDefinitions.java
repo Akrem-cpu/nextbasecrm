@@ -52,7 +52,7 @@ public class MessageFunctionality_StepDefinitions {
     }
 
 
-    @Given("marketing user is login in to the hr account")
+    @Given("marketing user is login in to the marketing account")
     public void marketing_user_is_login_in_to_the_hr_account() {
         Driver.getDriver().get(ConfiReader.getProperty("env"));
         Authorization aPage = new  Authorization();
@@ -85,7 +85,7 @@ public class MessageFunctionality_StepDefinitions {
     }
 
 
-    @Given("helpdesk user is login in to the hr account")
+    @Given("helpdesk user is login in to the helpdesk account")
     public void helpdesk_user_is_login_in_to_the_hr_account() {
         Driver.getDriver().get(ConfiReader.getProperty("env"));
         Authorization aPage = new  Authorization();

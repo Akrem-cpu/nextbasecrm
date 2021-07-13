@@ -1,4 +1,4 @@
-
+@regression
 Feature:As a user, I should be able to vote for a poll
 
 
@@ -12,7 +12,7 @@ Feature:As a user, I should be able to vote for a poll
 
   Scenario:users helpdesk can select an answer to vote a poll.
     Given User is on nextbase login page
-    When helpdesk user is login in to the hr account
+    When helpdesk user is login in to the helpdesk account
     And helpdesk user navigate to poll post for vote
     And helpdesk user check the box that user like to vote for
     And helpdesk user click on the vote button
@@ -20,7 +20,7 @@ Feature:As a user, I should be able to vote for a poll
 
   Scenario:users Marketing can select an answer to vote a poll.
     Given User is on nextbase login page
-    When marketing user is login in to the hr account
+    When marketing user is login in to the marketing account
     And marketing  user navigate to poll post for vote
     And marketing  user check the box that user like to vote for
     And marketing  user click on the vote button
@@ -28,15 +28,15 @@ Feature:As a user, I should be able to vote for a poll
 
   Scenario:users Marketing can select an answer to vote a poll.
     Given User is on nextbase login page
-    When marketing user is login in to the hr account
+    When marketing user is login in to the marketing account
     And marketing  user navigate to poll post for vote
     And marketing  user check the box that user like to vote for
     And marketing  user click on the vote button
     And marketing user click on vote again button
     Then marketing user should be able to vote again
-  @wip
+
   Scenario:users Marketing can select an answer to vote a poll.
     Given User is on nextbase login page
-    When marketing user is login in to the hr account
+    When marketing user is login in to the marketing account
     And marketing  user navigate to poll post the user created
    Then marketing user should see stop button
