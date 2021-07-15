@@ -1,7 +1,5 @@
+@regression
 Feature:4)As a user, I should be able to create a poll
-
-
-
 
   Scenario:users  hr create a poll with Q/A
     Given hr user is login in to the hr account
