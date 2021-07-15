@@ -88,4 +88,7 @@ public class ActivityStream {
     @FindBy(xpath = "//div[@class='vote-fields']//li[@class='vote-question']")
     public List<WebElement> allAddedQuestionWhenCreatedAPoll;
 
+    @FindBy(xpath = "//button[@id='blog-submit-button-cancel']")
+    public WebElement cancelButton;
+
 }

@@ -1,7 +1,7 @@
 Feature:4)As a user, I should be able to create a poll
 
-  4. users can add more questions to a poll
-  5. users are able to cancle creating a poll"
+
+
 
   Scenario:users  hr create a poll with Q/A
     Given hr user is login in to the hr account
@@ -46,10 +46,17 @@ Feature:4)As a user, I should be able to create a poll
       And helpdesk give the options
       And helpdesk click on multiple answer check box
       Then helpdesk should see multiple answer check box selected
-  @wip
+
   Scenario:  users can add more questions to a poll
     Given helpdesk user is login in to the helpdesk account
     When helpdesk click on poll
     And helpdesk write a title
     And helpdesk click on add question
     Then helpdesk user should see extra box for question
+  @wip
+  Scenario:  users can can Cancel creating a poll
+    Given helpdesk user is login in to the helpdesk account
+    When helpdesk click on poll
+    And helpdesk write a title
+    And helpdesk click on Cancel button
+    Then helpdesk should see the poll canceled

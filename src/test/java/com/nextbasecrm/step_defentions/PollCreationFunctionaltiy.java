@@ -177,7 +177,9 @@ public class PollCreationFunctionaltiy {
         Assert.assertTrue(stream.multipleChoiceAllowButtonForPollCreation.isSelected());
     }
 
-
+    /**
+     *  Scenario:  users can add more questions to a poll
+     */
     @And("helpdesk click on add question")
     public void helpdeskClickOnAddQuestion() {
         ActivityStream stream = new ActivityStream();
@@ -186,12 +188,32 @@ public class PollCreationFunctionaltiy {
         actions.moveToElement(stream.addQuestionWhenCreatingPoll).perform();
         stream.addQuestionWhenCreatingPoll.click();
     }
-
     @Then("helpdesk user should see extra box for question")
     public void helpdeskUserShouldSeeExtraBoxForQuestion() {
         ActivityStream stream = new ActivityStream();
         Integer expectedBoxNumber = 2;
         Integer actualBoxNumber = stream.allAddedQuestionWhenCreatedAPoll.size();
         Assert.assertEquals(actualBoxNumber,expectedBoxNumber);
+    }
+
+
+
+
+    /**
+     *  Scenario:  users can can Cancel creating a poll
+     */
+
+    @And("helpdesk click on Cancel button")
+    public void helpdeskClickOnCancelButton() {
+        ActivityStream stream = new ActivityStream();
+        new Actions(Driver.getDriver()).moveToElement(stream.cancelButton).perform();
+        stream.cancelButton.click();
+    }
+
+
+    @Then("helpdesk should see the poll canceled")
+    public void helpdeskShouldSeeThePollCanceled() {
+        ActivityStream stream = new ActivityStream();
+        Assert.assertFalse(stream.questionBoxForPollCreation.isDisplayed());
     }
 }
