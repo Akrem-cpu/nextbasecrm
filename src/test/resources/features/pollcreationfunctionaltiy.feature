@@ -51,7 +51,7 @@ Feature:4)As a user, I should be able to create a poll
     And helpdesk write a title
     And helpdesk click on add question
     Then helpdesk user should see extra box for question
-  @wip
+
   Scenario:  users can can Cancel creating a poll
     Given helpdesk user is login in to the helpdesk account
     When helpdesk click on poll
