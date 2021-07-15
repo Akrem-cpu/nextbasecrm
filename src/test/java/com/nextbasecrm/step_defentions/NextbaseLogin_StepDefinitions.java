@@ -1,7 +1,7 @@
 package com.nextbasecrm.step_defentions;
 
+import com.nextbasecrm.pages.ActivityStream;
 import com.nextbasecrm.pages.Authorization;
-import com.nextbasecrm.pages.Portal;
 import com.nextbasecrm.utilities.BrowserUtils;
 import com.nextbasecrm.utilities.ConfiReader;
 import com.nextbasecrm.utilities.Driver;
@@ -15,13 +15,7 @@ public class NextbaseLogin_StepDefinitions {
     /**
      * Scenario:  As a Helper user, I should be able to login to the app
      */
-    @Given("Helper user is on nextbase login page")
-    public void helper_user_is_on_nextbase_login_page() {
-      Driver.getDriver().get(ConfiReader.getProperty("env"));
-      String actualTitle = Driver.getDriver().getTitle();
-      String expectedTitle = "Authorization";
-      Assert.assertEquals(actualTitle,expectedTitle);
-    }
+
     @When("User input valid Credentials")
     public void user_input_valid_credentials() {
          Authorization.inputValidCredentials("helperUserName");
@@ -39,17 +33,13 @@ public class NextbaseLogin_StepDefinitions {
      Driver.closeDriver();
     }
 
+
+
+
     /**
      *  Scenario:  As a Hr user, I should be able to login to the app
      */
-    @Given("hr user is on nextbase login page")
-    public void hr_user_is_on_nextbase_login_page() {
-        Driver.getDriver().get(ConfiReader.getProperty("env"));
-        String actualTitle = Driver.getDriver().getTitle();
-        String expectedTitle = "Authorization";
-        Assert.assertEquals(actualTitle,expectedTitle);
 
-    }
     @When("hr User input valid Credentials")
     public void hr_user_input_valid_credentials() {
         Authorization.inputValidCredentials("hrUserName");
@@ -67,17 +57,15 @@ public class NextbaseLogin_StepDefinitions {
         Driver.closeDriver();
     }
 
+
+
+
+
+
     /**
      * Scenario:As a marketing user, I should be able to login to the app
      */
-    @Given("marketing user is on nextbase login page")
-    public void marketing_user_is_on_nextbase_login_page() {
-        Driver.getDriver().get(ConfiReader.getProperty("env"));
-        String actualTitle = Driver.getDriver().getTitle();
-        String expectedTitle = "Authorization";
-        Assert.assertEquals(actualTitle,expectedTitle);
 
-    }
     @When("marketing User input valid Credentials")
     public void marketing_user_input_valid_credentials() {
         Authorization.inputValidCredentials("mrUserName");
@@ -95,18 +83,17 @@ public class NextbaseLogin_StepDefinitions {
         Driver.closeDriver();
     }
 
+
+
+
+
+
+
+
     /**
      * Scenario: users cannot login with invalid credentials.(Negative )
      */
 
-    @Given("User is on nextbase login page")
-    public void user_is_on_nextbase_login_page() {
-        Driver.getDriver().get(ConfiReader.getProperty("env"));
-        BrowserUtils.sleep(2);
-        String actualTitle = Driver.getDriver().getTitle();
-        String expectedTitle = "Authorization";
-        Assert.assertEquals(actualTitle,expectedTitle);
-    }
     @When("User input invalid Credentials")
     public void user_input_invalid_credentials() {
        Authorization.inputInvalidCredentials();
@@ -126,16 +113,15 @@ public class NextbaseLogin_StepDefinitions {
 
     }
 
+
+
+
+
+
     /**
      * Scenario: verify users can check ""Remember me on this computer"" option
      */
-    @Given("Helper user navigate is on nextbase login page")
-    public void helper_user_navigate_is_on_nextbase_login_page() {
-        Driver.getDriver().get(ConfiReader.getProperty("env"));
-        String actualTitle = Driver.getDriver().getTitle();
-        String expectedTitle = "Authorization";
-        Assert.assertEquals(actualTitle,expectedTitle);
-    }
+
     @When("Helper user input valid Credentials")
     public void helper_user_input_valid_credentials() {
        Authorization.inputValidCredentials("helperUserName");
@@ -152,7 +138,7 @@ public class NextbaseLogin_StepDefinitions {
     }
     @When("Helper user log out")
     public void helper_user_log_out() {
-        Portal page = new Portal();
+        ActivityStream page = new ActivityStream();
         page.userInfDiv.click();
         page.Logout.click();
     }
@@ -183,10 +169,7 @@ public class NextbaseLogin_StepDefinitions {
     /**
      *  Scenario: verify users can check ""Remember me on this computer"" option
      */
-    @Given("user is on nextbase login page")
-    public void user_is_on_nextbase_login_page1() {
-        Driver.getDriver().get(ConfiReader.getProperty("env"));
-    }
+
     @When("user click on FORGOT YOUR PASSWORD link")
     public void user_click_on_forgot_your_password_link() {
       Authorization page = new Authorization();
