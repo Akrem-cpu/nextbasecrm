@@ -1,7 +1,7 @@
 
 Feature: "3. As a user, I should be able to search people,
   document and more from search box"
- # this need more explanation
+
 
   3. users get ""Employees"", ""Groups"", ""Menu itemts"", and ""search"" once typeing at least a letter
   "
