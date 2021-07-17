@@ -23,7 +23,7 @@ Feature: "3. As a user, I should be able to search people,
     Then helpdesk  user type "hello" in the search box
     And  helpdesk user click on search
     Then helpdesk user should see "hello" post
-  @wip
+
     Scenario: users cannot find an invalid info, the page should show "" Nothing Found"" (negative)
       Given helpdesk user is login in to the helpdesk account
       And helpdesk  user type "invalid" in the search box

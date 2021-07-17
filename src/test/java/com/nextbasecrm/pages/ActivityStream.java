@@ -102,4 +102,10 @@ public class ActivityStream {
     @FindBy(xpath = "//div[@class='feed-wrap-empty']")
     public WebElement invalidSearch;
 
+    @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//div[contains(@id,'bx-ilike-top-users')]")
+    public WebElement firstPostToLikeComfrmation;
+
+    @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//a[.='Like']")
+    public WebElement likeButtonForTheFirstPost;
+
 }
