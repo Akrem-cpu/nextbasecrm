@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         glue = "com/nextbasecrm/step_defentions",
         tags = "@wip",
         plugin = "html:target/report.html",
-        dryRun = false
+        dryRun =  false
 
 )
 

@@ -108,4 +108,33 @@ public class ActivityStream {
     @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//a[.='Like']")
     public WebElement likeButtonForTheFirstPost;
 
+    @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//span[@class='feed-inform-follow']/a")
+    public WebElement followButtonOnTheFirstMostRecentPost;
+
+    @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//span[@class='feed-content-view-cnt-wrap']")
+    public WebElement viewIconForTheMostRecentPost;
+
+    @FindBy(xpath = "//div[@Class='popup-window popup-window-contentview popup-window-close-animation-opacity']//span[@class='bx-contentview-popup-name-new']")
+    public WebElement peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton;
+
+    @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//div[contains(@class,'feed-post-important-switch')]")
+    public WebElement addToFavoritesButtonForRecentPost;
+
+    @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//div[@class='feed-com-main-content feed-com-block-old feed-com-block-read']")
+    public WebElement firstCommentButtonForMostRecentPost;
+
+    @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//a[.='Add comment']")
+    public WebElement commentBoxOnTheMostRecentPost;
+
+    @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//button[@class='ui-btn ui-btn-sm ui-btn-primary']")
+    public WebElement sendCommentForTheMostRecentPost;
+      @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+    public WebElement iframeForCommentText;
+      @FindBy(xpath = "//body")
+    public WebElement textBoxInsideCommentIframe;
+
+      @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//button[@class='ui-btn ui-btn-sm ui-btn-link']")
+    public WebElement cancelButtonForCommentForRecentPost;
+
+
 }
