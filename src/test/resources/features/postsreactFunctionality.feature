@@ -1,4 +1,4 @@
-@regression @wip
+@regression
 Feature:7) As a user, I should be able to do
   see posts from homepage.
 

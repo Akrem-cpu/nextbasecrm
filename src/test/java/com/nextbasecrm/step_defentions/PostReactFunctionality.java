@@ -90,7 +90,7 @@ public class PostReactFunctionality {
         String actualText = stream.followButtonOnTheFirstMostRecentPost.getText();
         Assert.assertEquals("there is diff b/n actual and expected this is the actual"+actualText,string,actualText);
     }
-
+//Todo this TS keep failing when run together fix it.
     /**
      * Scenario: users can see who are the people viewed a post with eye icon
      */
@@ -98,12 +98,16 @@ public class PostReactFunctionality {
     public void helpdesk_user_click_on_the_view_icon() {
         ActivityStream stream = new ActivityStream();
         stream.viewIconForTheMostRecentPost.click();
+
     }
     @Then("helpdesk should see the people who viewed the post")
     public void helpdesk_should_see_the_people_who_viewed_the_post() {
         ActivityStream stream = new ActivityStream();
-       new  WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(stream.peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton));
-       Assert.assertTrue(stream.peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton.isDisplayed());
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        wait.until(ExpectedConditions.visibilityOf(stream.peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton));
+        String actualText = stream.peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton.getText();
+        String expectedText = "Views";
+        Assert.assertEquals(actualText,expectedText);
     }
 
     /**
@@ -117,11 +121,11 @@ public class PostReactFunctionality {
           stream.addToFavoritesButtonForRecentPost.click();
       }
       stream.addToFavoritesButtonForRecentPost.click();
+      new  WebDriverWait(Driver.getDriver(),10).until(ExpectedConditions.attributeToBe(stream.addToFavoritesButtonForRecentPost,"title","Remove from favorites"));
     }
     @Then("helpdesk user should see the post added to favorites post")
     public void helpdesk_user_should_see_the_post_added_to_favorites_post() {
         ActivityStream stream = new ActivityStream();
-        BrowserUtils.sleep(1);
         String actualText = stream.addToFavoritesButtonForRecentPost.getAttribute("title");
         String expectedText = "Remove from favorites";
         Assert.assertEquals(actualText,expectedText);

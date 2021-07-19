@@ -1,6 +1,7 @@
 package com.nextbasecrm.pages;
 
 import com.nextbasecrm.utilities.Driver;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -9,48 +10,48 @@ import java.security.PublicKey;
 import java.util.List;
 
 public class ActivityStream {
-    public ActivityStream(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public ActivityStream() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(xpath = "//div[@id='user-block']")
     public WebElement userInfDiv;
     @FindBy(xpath = "//span[.='Log out']")
     public WebElement Logout;
-     @FindBy(xpath = "//div[@class='feed-add-post-micro']")
+    @FindBy(xpath = "//div[@class='feed-add-post-micro']")
     public WebElement messageBox;
-     @FindBy(className = "bx-editor-iframe")
+    @FindBy(className = "bx-editor-iframe")
     public WebElement firstIframe;
 
-     @FindBy(xpath = "//body[@contenteditable='true']")
+    @FindBy(xpath = "//body[@contenteditable='true']")
     public WebElement messageBoxInsideIframeOne;
 
-     @FindBy(xpath = "//button[@id='blog-submit-button-save']")
+    @FindBy(xpath = "//button[@id='blog-submit-button-save']")
     public WebElement sendMessage;
 
-     @FindBy (xpath = "(//div[@class='workarea-content-paddings']//div[@class='feed-post-text-block-inner-inner'])[1]")
+    @FindBy(xpath = "(//div[@class='workarea-content-paddings']//div[@class='feed-post-text-block-inner-inner'])[1]")
     public WebElement firstRecentlyPostedMessage;
 
-     @FindBy(xpath = "//button[@id='blog-submit-button-cancel']")
+    @FindBy(xpath = "//button[@id='blog-submit-button-cancel']")
     public WebElement messageCancelButton;
 
-     @FindBy(xpath = "//span[@title='Link']")
+    @FindBy(xpath = "//span[@title='Link']")
     public WebElement AddLinkButton;
 
 
-     @FindBy(xpath = "//input[@id='undefined']")
+    @FindBy(xpath = "//input[@id='undefined']")
     public WebElement saveLinkAfterGivingALinkAndName;
 
-     @FindBy(xpath = "//input[@id='linkidPostFormLHE_blogPostForm-text']")
+    @FindBy(xpath = "//input[@id='linkidPostFormLHE_blogPostForm-text']")
     public WebElement linkTextBoxToGiveATextToTheLink;
 
-     @FindBy(xpath = "//input[@id='linkidPostFormLHE_blogPostForm-href']")
+    @FindBy(xpath = "//input[@id='linkidPostFormLHE_blogPostForm-href']")
     public WebElement linkUrlBoxToGiveAUrlForTheLink;
 
-     @FindBy(xpath = "(//div[@class='workarea-content-paddings']//div[@class='feed-post-text-block-inner-inner'])[1]/a")
+    @FindBy(xpath = "(//div[@class='workarea-content-paddings']//div[@class='feed-post-text-block-inner-inner'])[1]/a")
     public WebElement linkInsideThePostedText;
-     @FindBy(xpath = "//div[@class='workarea-content-paddings']/div[3]/div[2]/div[1]//span[.='happy']")
-     public WebElement firstOptionToSelectFromThePollVote;
+    @FindBy(xpath = "//div[@class='workarea-content-paddings']/div[3]/div[2]/div[1]//span[.='happy']")
+    public WebElement firstOptionToSelectFromThePollVote;
 
     @FindBy(xpath = "//div[@class='workarea-content-paddings']/div[3]/div[2]/div[1]//button[.='Vote']")
     public WebElement voteButton;
@@ -114,7 +115,7 @@ public class ActivityStream {
     @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//span[@class='feed-content-view-cnt-wrap']")
     public WebElement viewIconForTheMostRecentPost;
 
-    @FindBy(xpath = "//div[@Class='popup-window popup-window-contentview popup-window-close-animation-opacity']//span[@class='bx-contentview-popup-name-new']")
+    @FindBy(xpath = "//div[@Class='popup-window popup-window-contentview popup-window-close-animation-opacity']//span[.='Views']")
     public WebElement peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton;
 
     @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//div[contains(@class,'feed-post-important-switch')]")
@@ -128,13 +129,48 @@ public class ActivityStream {
 
     @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//button[@class='ui-btn ui-btn-sm ui-btn-primary']")
     public WebElement sendCommentForTheMostRecentPost;
-      @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
     public WebElement iframeForCommentText;
-      @FindBy(xpath = "//body")
+    @FindBy(xpath = "//body")
     public WebElement textBoxInsideCommentIframe;
 
-      @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//button[@class='ui-btn ui-btn-sm ui-btn-link']")
+    @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//button[@class='ui-btn ui-btn-sm ui-btn-link']")
     public WebElement cancelButtonForCommentForRecentPost;
+
+    @FindBy(xpath = "//span[@id='feed-add-post-form-tab-calendar']")
+    public WebElement event;
+
+    @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-post-block feed-calendar-confirm feed-post-block-short feed-post-block-separator'][1]")
+    public WebElement mostRecentPostedEvent;
+
+    @FindBy(xpath = "//span[@class='feed-event-time ampm-width'][1]")
+    public WebElement startTimeBoxForEvenCreation;
+
+    @FindBy(xpath = "//div[@id='feed_cal_event_from_timecal_3Jcl_div']//input[@title='Hours']")
+    public WebElement startTimeBoxTOChangeTime;
+
+    @FindBy(xpath ="//span[@class='feed-event-time ampm-width'][2]" )
+    public WebElement endTimeBoxForEventCreation;
+    @FindBy(xpath = "//div[@id='feed_cal_event_to_timecal_3Jcl_div']//input[@title='Hours']")
+    public WebElement endTimeBoxToChangeTime;
+
+    @FindBy(xpath = "//div[@id='feed_cal_event_to_timecal_3Jcl_div']//input[@value='Set Time']")
+    public WebElement setEndTimeForEvenCreation;
+
+    @FindBy(xpath = "//div[@id='feed_cal_event_from_timecal_3Jcl_div']//input[@value='Set Time']")
+    public WebElement setStartTimeForEventCreation;
+
+    @FindBy(xpath = "//div[@id='feed_cal_event_from_timecal_3Jcl_div']//div[@class='bxc-title']")
+    public WebElement timeTextForStartTime;
+
+    @FindBy(xpath = "//div[@id='feed_cal_event_to_timecal_3Jcl_div']//div[@class='bxc-title']")
+    public WebElement timeTextForEndTime;
+
+    @FindBy(xpath = "//input[@id='event-full-daycal_3Jcl']")
+    public WebElement allDayButtonForEventCreation;
+
+
+
 
 
 }

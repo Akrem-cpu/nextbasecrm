@@ -11,6 +11,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 
 public class MessageFunctionality_StepDefinitions {
     Faker faker = new Faker();
@@ -35,6 +36,8 @@ public class MessageFunctionality_StepDefinitions {
     @Then("hr user click on send")
     public void hr_user_click_on_send() {
         ActivityStream page = new ActivityStream();
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(page.sendMessage).perform();
         page.sendMessage.click();
     }
     @Then("hr user should see the text under activity stream")
