@@ -4,10 +4,12 @@ import com.github.javafaker.Faker;
 import com.nextbasecrm.pages.ActivityStream;
 import com.nextbasecrm.utilities.BrowserUtils;
 import com.nextbasecrm.utilities.Driver;
+import com.nextbasecrm.utilities.Pages;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,6 +17,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Eventfuctionaltiy_StepDefinitions {
     String data = new Faker().name().firstName();
+    String actualStartTime ;
+    String actualEndTime;
 
 
     /**
@@ -47,8 +51,7 @@ public class Eventfuctionaltiy_StepDefinitions {
 
     @When("marketing user click on event")
     public void marketing_user_click_on_event() {
-        ActivityStream stream = new ActivityStream();
-        stream.event.click();
+        Pages.getStream().event.click();
     }
     @When("marketing user give need filed")
     public void marketing_user_give_need_filed() {
@@ -117,6 +120,8 @@ public class Eventfuctionaltiy_StepDefinitions {
         wait.until(ExpectedConditions.visibilityOf(stream.startTimeBoxForEvenCreation));
         stream.startTimeBoxTOChangeTime.clear();
         stream.startTimeBoxTOChangeTime.sendKeys(arg0+ Keys.ENTER);
+        this.actualStartTime = stream.timeTextForStartTime.getText();
+        String a = Driver.getDriver().findElement(By.xpath("//div[@class='bxc-title'][1]")).getAttribute("innerText");
     }
     @And("helpdesk user click on set time for the start time")
     public void helpdeskUserClickOnSetTime() {
@@ -137,6 +142,7 @@ public class Eventfuctionaltiy_StepDefinitions {
         ActivityStream stream = new ActivityStream();
         stream.endTimeBoxToChangeTime.clear();
         stream.endTimeBoxToChangeTime.sendKeys(arg0+Keys.ENTER);
+        this.actualEndTime =stream.timeTextForEndTime.getText();
 
     }
     @And("helpdesk user click on set time for the end time")
@@ -150,12 +156,10 @@ public class Eventfuctionaltiy_StepDefinitions {
     @Then("helpdesk user should see the date changed start time {string} end time {string}")
     public void helpdeskUserShouldSeeTheDateChangedStartTimeEndTime(String arg0, String arg1) {
         ActivityStream stream = new ActivityStream();
-        String actualTimeForTheStart = stream.timeTextForStartTime.getText();
-        String actualTimeForTheEnd = stream.timeTextForEndTime.getText();
-        System.out.println(actualTimeForTheEnd +" actual = expected =" +arg0);
-        System.out.println(actualTimeForTheStart +" actual = expected =" +arg1);
-        Assert.assertTrue(actualTimeForTheStart.contains(arg0));
-        Assert.assertTrue(actualTimeForTheEnd.contains(arg1));
+        System.out.println(actualStartTime +" actual = expected =" +arg0);
+        System.out.println(actualStartTime +" actual = expected =" +arg1);
+        Assert.assertTrue(actualStartTime.contains(arg0));
+        Assert.assertTrue(actualEndTime.contains(arg1));
 
 
 
@@ -167,15 +171,13 @@ public class Eventfuctionaltiy_StepDefinitions {
      */
     @And("helpdesk user click on all day check box")
     public void helpdeskUserClickOnAllDayCheckBox() {
-        ActivityStream stream = new ActivityStream();
-        stream.allDayButtonForEventCreation.click();
+        Pages.getStream().allDayButtonForEventCreation.click();
     }
 
     @Then("helpdesk user should see time disapear from the page")
     public void helpdeskUserShouldSeeTimeDisapearFromThePage() {
-        ActivityStream stream = new ActivityStream();
-        Assert.assertFalse(stream.endTimeBoxForEventCreation.isDisplayed());
-        Assert.assertFalse(stream.startTimeBoxForEvenCreation.isDisplayed());
+        Assert.assertFalse(Pages.getStream().endTimeBoxForEventCreation.isDisplayed());
+        Assert.assertFalse(Pages.getStream().startTimeBoxForEvenCreation.isDisplayed());
 
     }
 }

@@ -160,10 +160,10 @@ public class ActivityStream {
     @FindBy(xpath = "//div[@id='feed_cal_event_from_timecal_3Jcl_div']//input[@value='Set Time']")
     public WebElement setStartTimeForEventCreation;
 
-    @FindBy(xpath = "//div[@id='feed_cal_event_from_timecal_3Jcl_div']//div[@class='bxc-title']")
+    @FindBy(xpath = "//div[@class='bxc-title'][1]")
     public WebElement timeTextForStartTime;
 
-    @FindBy(xpath = "//div[@id='feed_cal_event_to_timecal_3Jcl_div']//div[@class='bxc-title']")
+    @FindBy(xpath = "//div[@class='bxc-title'][2]")
     public WebElement timeTextForEndTime;
 
     @FindBy(xpath = "//input[@id='event-full-daycal_3Jcl']")
