@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features ="src/test/resources/features",
         glue = "com/nextbasecrm/step_defentions",
-        tags = "@wip",
+        tags = "@smoke or @regression",
         plugin = "html:target/report.html",
         dryRun =  false
 

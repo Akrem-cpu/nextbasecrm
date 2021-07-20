@@ -2,6 +2,7 @@ package com.nextbasecrm.step_defentions;
 
 import com.nextbasecrm.pages.ActivityStream;
 import com.nextbasecrm.utilities.Driver;
+import com.nextbasecrm.utilities.Pages;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,19 +18,16 @@ public class PollVoteFunctionaltiy_StepDef {
      */
     @When("hr user check the box that user like to vote for")
     public void hr_user_check_the_box_that_user_like_to_vote_for() {
-       ActivityStream stream = new ActivityStream();
-       stream.firstOptionToSelectFromThePollVote.click();
+        Pages.getStream().firstOptionToSelectFromThePollVote.click();
     }
     @When("hr user click on the vote button")
     public void hr_user_click_on_the_vote_button() {
-        ActivityStream stream = new ActivityStream();
-        stream.voteButton.click();
+        Pages.getStream().voteButton.click();
     }
     @Then("hr user should see {string} text")
     public void hr_user_should_see_text(String string) {
-        ActivityStream stream = new ActivityStream();
-        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(stream.voteAgainTxt));
-        String actualText = stream.voteAgainTxt.getText();
+        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(Pages.getStream().voteAgainTxt));
+        String actualText = Pages.getStream().voteAgainTxt.getText();
         Assert.assertEquals(actualText,string);
 
     }
@@ -39,19 +37,16 @@ public class PollVoteFunctionaltiy_StepDef {
      */
     @Given("marketing user check the box that user like to vote for")
     public void marketing_user_check_the_box_that_user_like_to_vote_for() {
-        ActivityStream stream = new ActivityStream();
-        stream.firstOptionToSelectFromThePollVote.click();
+        Pages.getStream().firstOptionToSelectFromThePollVote.click();
     }
     @When("marketing user click on the vote button")
     public void marketing_user_click_on_the_vote_button() {
-        ActivityStream stream = new ActivityStream();
-        stream.voteButton.click();
+        Pages.getStream().voteButton.click();
     }
     @Then("marketing user should see {string} text")
     public void marketing_user_should_see_text(String string) {
-        ActivityStream stream = new ActivityStream();
-        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(stream.voteAgainTxt));
-        String actualText = stream.voteAgainTxt.getText();
+        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(Pages.getStream().voteAgainTxt));
+        String actualText = Pages.getStream().voteAgainTxt.getText();
         Assert.assertEquals(actualText,string);
 
     }
@@ -61,19 +56,16 @@ public class PollVoteFunctionaltiy_StepDef {
      */
     @Given("helpdesk  user check the box that user like to vote for")
     public void helpdesk_user_check_the_box_that_user_like_to_vote_for() {
-        ActivityStream stream = new ActivityStream();
-        stream.firstOptionToSelectFromThePollVote.click();
+        Pages.getStream().firstOptionToSelectFromThePollVote.click();
     }
     @Given("helpdesk user click on the vote button")
     public void helpdesk_user_click_on_the_vote_button() {
-        ActivityStream stream = new ActivityStream();
-        stream.voteButton.click();
+        Pages.getStream().voteButton.click();
     }
     @Then("helpdesk  user should see {string} text")
     public void helpdesk_user_should_see_text(String string) {
-        ActivityStream stream = new ActivityStream();
-        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(stream.voteAgainTxt));
-        String actualText = stream.voteAgainTxt.getText();
+        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(Pages.getStream().voteAgainTxt));
+        String actualText = Pages.getStream().voteAgainTxt.getText();
         Assert.assertEquals(actualText,string);
     }
 
@@ -82,15 +74,13 @@ public class PollVoteFunctionaltiy_StepDef {
      */
     @And("helpdesk user click on the VOTE AGAIN button")
     public void helpdeskUserClickOnTheVOTEAGAINButton() {
-        ActivityStream stream = new ActivityStream();
-        stream.voteAgainTxt.click();
+        Pages.getStream().voteAgainTxt.click();
     }
     @Then("helpdesk should see {string} button")
     public void helpdeskShouldSeeButton(String arg0) {
-        ActivityStream stream = new ActivityStream();
-        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(stream.voteButton));
-        String actualText = stream.voteButton.getText();
-        Assert.assertTrue(stream.voteButton.isEnabled());
+        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(Pages.getStream().voteButton));
+        String actualText = Pages.getStream().voteButton.getText();
+        Assert.assertTrue(Pages.getStream().voteButton.isEnabled());
         Assert.assertEquals(actualText,arg0);
     }
 
@@ -101,9 +91,9 @@ public class PollVoteFunctionaltiy_StepDef {
 
     @Then("marketing user should see {string} text on the poll that user created")
     public void marketingUserShouldSeeTextOnThePollThatUserCreated(String arg0) {
-        ActivityStream stream = new ActivityStream();
-        String actualText = stream.stopVoteForOnlyTheCreaterOfThePoll.getText();
+
+        String actualText = Pages.getStream().stopVoteForOnlyTheCreaterOfThePoll.getText();
         Assert.assertEquals(actualText,arg0);
-        stream.stopVoteForOnlyTheCreaterOfThePoll.click();
+        Pages.getStream().stopVoteForOnlyTheCreaterOfThePoll.click();
     }
 }

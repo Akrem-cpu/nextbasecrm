@@ -2,6 +2,7 @@ package com.nextbasecrm.pages;
 
 import com.nextbasecrm.utilities.ConfiReader;
 import com.nextbasecrm.utilities.Driver;
+import com.nextbasecrm.utilities.Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,15 +35,13 @@ public class Authorization {
 
 
     public static void inputValidCredentials(String keyword ){
-         Authorization page = new Authorization();
-         page.userNameInputBox.sendKeys(ConfiReader.getProperty(keyword));
-         page.passwordInputBox.sendKeys(ConfiReader.getProperty("password"));
+        Pages.getAuthorization().userNameInputBox.sendKeys(ConfiReader.getProperty(keyword));
+        Pages.getAuthorization().passwordInputBox.sendKeys(ConfiReader.getProperty("password"));
 
     }
     public static void inputInvalidCredentials(){
-        Authorization page = new Authorization();
-        page.userNameInputBox.sendKeys("Incorrect@cybertekschool.com");
-        page.passwordInputBox.sendKeys("incorrect");
+        Pages.getAuthorization().userNameInputBox.sendKeys("Incorrect@cybertekschool.com");
+        Pages.getAuthorization().passwordInputBox.sendKeys("incorrect");
     }
 
 

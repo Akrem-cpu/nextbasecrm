@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.nextbasecrm.pages.ActivityStream;
 import com.nextbasecrm.utilities.BrowserUtils;
 import com.nextbasecrm.utilities.Driver;
+import com.nextbasecrm.utilities.Pages;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -28,40 +29,37 @@ public class PollCreationFunctionaltiy {
      */
     @When("hr click on poll")
     public void hr_click_on_poll() {
-        ActivityStream stream = new ActivityStream();
-        stream.poll.click();
+        Pages.getStream().poll.click();
 
     }
     @When("hr write a title")
     public void hr_write_a_title() {
-        ActivityStream stream = new ActivityStream();
-        Driver.getDriver().switchTo().frame(stream.firstIframe);
-        stream.messageBoxInsideIframeOne.sendKeys(title);
+        Driver.getDriver().switchTo().frame(Pages.getStream().firstIframe);
+        Pages.getStream().messageBoxInsideIframeOne.sendKeys(title);
         Driver.getDriver().switchTo().defaultContent();
     }
     @When("hr write the question")
     public void hr_write_the_question() {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(),15);
-        ActivityStream stream = new ActivityStream();
-        wait.until(ExpectedConditions.visibilityOf(stream.questionBoxForPollCreation));
-        stream.questionBoxForPollCreation.sendKeys(question);
+        wait.until(ExpectedConditions.visibilityOf(Pages.getStream().questionBoxForPollCreation));
+        Pages.getStream().questionBoxForPollCreation.sendKeys(question);
 
     }
     @When("hr give the options")
     public void hr_give_the_options() {
-        ActivityStream stream = new ActivityStream();
-        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(stream.listOfVoteAnswerForPollCreation.get(0)));
+
+        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(Pages.getStream().listOfVoteAnswerForPollCreation.get(0)));
         for (int i = 0; i < 2 ; i++) {
-            stream.listOfVoteAnswerForPollCreation.get(i).sendKeys(options.get(i));
+            Pages.getStream().listOfVoteAnswerForPollCreation.get(i).sendKeys(options.get(i));
         }
-       Assert.assertTrue(stream.multipleChoiceAllowButtonForPollCreation.isDisplayed());
+       Assert.assertTrue(Pages.getStream().multipleChoiceAllowButtonForPollCreation.isDisplayed());
     }
     @Then("hr should see the created poll")
     public void hr_should_see_the_created_poll() {
-        ActivityStream stream = new ActivityStream();
+
         BrowserUtils.sleep(1);
         String expectedPollTitle = title;
-        String actualPollTitle = stream.firstRecentlyPostedMessage.getText();
+        String actualPollTitle = Pages.getStream().firstRecentlyPostedMessage.getText();
         Assert.assertEquals(expectedPollTitle,actualPollTitle);
         Driver.closeDriver();
     }
@@ -73,38 +71,34 @@ public class PollCreationFunctionaltiy {
      */
     @And("marketing click on poll")
     public void marketingClickOnPoll() {
-        ActivityStream stream = new ActivityStream();
-        stream.poll.click();
+
+        Pages.getStream().poll.click();
     }
     @And("marketing write a title")
     public void marketingWriteATitle() {
-        ActivityStream stream = new ActivityStream();
-        Driver.getDriver().switchTo().frame(stream.firstIframe);
-        stream.messageBoxInsideIframeOne.sendKeys(title);
+        Driver.getDriver().switchTo().frame(Pages.getStream().firstIframe);
+        Pages.getStream().messageBoxInsideIframeOne.sendKeys(title);
         Driver.getDriver().switchTo().defaultContent();
     }
     @And("marketing write the question")
     public void marketingWriteTheQuestion() {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(),15);
-        ActivityStream stream = new ActivityStream();
-        wait.until(ExpectedConditions.visibilityOf(stream.questionBoxForPollCreation));
-        stream.questionBoxForPollCreation.sendKeys(question);
+        wait.until(ExpectedConditions.visibilityOf(Pages.getStream().questionBoxForPollCreation));
+        Pages.getStream().questionBoxForPollCreation.sendKeys(question);
     }
     @And("marketing give the options")
     public void marketingGiveTheOptions() {
-        ActivityStream stream = new ActivityStream();
-        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(stream.listOfVoteAnswerForPollCreation.get(0)));
+        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(Pages.getStream().listOfVoteAnswerForPollCreation.get(0)));
         for (int i = 0; i < 2 ; i++) {
-            stream.listOfVoteAnswerForPollCreation.get(i).sendKeys(options.get(i));
+            Pages.getStream().listOfVoteAnswerForPollCreation.get(i).sendKeys(options.get(i));
         }
-        Assert.assertTrue(stream.multipleChoiceAllowButtonForPollCreation.isDisplayed());
+        Assert.assertTrue(Pages.getStream().multipleChoiceAllowButtonForPollCreation.isDisplayed());
     }
     @Then("marketing should see the created poll")
     public void marketingShouldSeeTheCreatedPoll() {
-        ActivityStream stream = new ActivityStream();
         BrowserUtils.sleep(1);
         String expectedPollTitle = title;
-        String actualPollTitle = stream.firstRecentlyPostedMessage.getText();
+        String actualPollTitle = Pages.getStream().firstRecentlyPostedMessage.getText();
         Assert.assertEquals(expectedPollTitle,actualPollTitle);
         Driver.closeDriver();
     }
@@ -114,38 +108,34 @@ public class PollCreationFunctionaltiy {
      */
     @When("helpdesk click on poll")
     public void helpdesk_click_on_poll() {
-        ActivityStream stream = new ActivityStream();
-        stream.poll.click();
+        Pages.getStream().poll.click();
     }
     @When("helpdesk write a title")
     public void helpdesk_write_a_title() {
-        ActivityStream stream = new ActivityStream();
-        Driver.getDriver().switchTo().frame(stream.firstIframe);
-        stream.messageBoxInsideIframeOne.sendKeys(title);
+        Driver.getDriver().switchTo().frame(Pages.getStream().firstIframe);
+        Pages.getStream().messageBoxInsideIframeOne.sendKeys(title);
         Driver.getDriver().switchTo().defaultContent();
     }
     @When("helpdesk write the question")
     public void helpdesk_write_the_question() {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(),15);
-        ActivityStream stream = new ActivityStream();
-        wait.until(ExpectedConditions.visibilityOf(stream.questionBoxForPollCreation));
-        stream.questionBoxForPollCreation.sendKeys(question);
+        wait.until(ExpectedConditions.visibilityOf(Pages.getStream().questionBoxForPollCreation));
+        Pages.getStream().questionBoxForPollCreation.sendKeys(question);
     }
     @When("helpdesk give the options")
     public void helpdesk_give_the_options() {
-        ActivityStream stream = new ActivityStream();
-        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(stream.listOfVoteAnswerForPollCreation.get(0)));
+        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(Pages.getStream().listOfVoteAnswerForPollCreation.get(0)));
         for (int i = 0; i < 2 ; i++) {
-            stream.listOfVoteAnswerForPollCreation.get(i).sendKeys(options.get(i));
+            Pages.getStream().listOfVoteAnswerForPollCreation.get(i).sendKeys(options.get(i));
         }
-        Assert.assertTrue(stream.multipleChoiceAllowButtonForPollCreation.isDisplayed());
+        Assert.assertTrue(Pages.getStream().multipleChoiceAllowButtonForPollCreation.isDisplayed());
     }
     @Then("helpdesk should see the created poll")
     public void helpdesk_should_see_the_created_poll() {
-        ActivityStream stream = new ActivityStream();
+
         BrowserUtils.sleep(1);
         String expectedPollTitle = title;
-        String actualPollTitle = stream.firstRecentlyPostedMessage.getText();
+        String actualPollTitle = Pages.getStream().firstRecentlyPostedMessage.getText();
         Assert.assertEquals(expectedPollTitle,actualPollTitle);
         Driver.closeDriver();
     }
@@ -156,8 +146,7 @@ public class PollCreationFunctionaltiy {
      */
     @Then("helpdesk should see {string} error Message")
     public void helpdeskShouldSeeErrorMessage(String arg0) {
-        ActivityStream stream = new ActivityStream();
-        String actualText = stream.errorMessageWhenTryingToCreatingPollWithOutTitle.getText();
+        String actualText = Pages.getStream().errorMessageWhenTryingToCreatingPollWithOutTitle.getText();
       Assert.assertEquals(arg0,actualText);
 
     }
@@ -167,14 +156,12 @@ public class PollCreationFunctionaltiy {
      */
     @And("helpdesk click on multiple answer check box")
     public void helpdeskClickOnMultipleAnswerCheckBox() {
-        ActivityStream stream = new ActivityStream();
-        Assert.assertFalse(stream.multipleChoiceAllowButtonForPollCreation.isSelected());
-        stream.multipleChoiceAllowButtonForPollCreation.click();
+        Assert.assertFalse(Pages.getStream().multipleChoiceAllowButtonForPollCreation.isSelected());
+        Pages.getStream().multipleChoiceAllowButtonForPollCreation.click();
     }
     @Then("helpdesk should see multiple answer check box selected")
     public void helpdeskShouldSeeMultipleAnswerCheckBoxSelected() {
-        ActivityStream stream = new ActivityStream();
-        Assert.assertTrue(stream.multipleChoiceAllowButtonForPollCreation.isSelected());
+        Assert.assertTrue(Pages.getStream().multipleChoiceAllowButtonForPollCreation.isSelected());
     }
 
     /**
@@ -182,17 +169,15 @@ public class PollCreationFunctionaltiy {
      */
     @And("helpdesk click on add question")
     public void helpdeskClickOnAddQuestion() {
-        ActivityStream stream = new ActivityStream();
-        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(stream.addQuestionWhenCreatingPoll));
+        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(Pages.getStream().addQuestionWhenCreatingPoll));
         Actions actions = new Actions(Driver.getDriver());
-        actions.moveToElement(stream.addQuestionWhenCreatingPoll).perform();
-        stream.addQuestionWhenCreatingPoll.click();
+        actions.moveToElement(Pages.getStream().addQuestionWhenCreatingPoll).perform();
+        Pages.getStream().addQuestionWhenCreatingPoll.click();
     }
     @Then("helpdesk user should see extra box for question")
     public void helpdeskUserShouldSeeExtraBoxForQuestion() {
-        ActivityStream stream = new ActivityStream();
         Integer expectedBoxNumber = 2;
-        Integer actualBoxNumber = stream.allAddedQuestionWhenCreatedAPoll.size();
+        Integer actualBoxNumber = Pages.getStream().allAddedQuestionWhenCreatedAPoll.size();
         Assert.assertEquals(actualBoxNumber,expectedBoxNumber);
     }
 
@@ -205,15 +190,13 @@ public class PollCreationFunctionaltiy {
 
     @And("helpdesk click on Cancel button")
     public void helpdeskClickOnCancelButton() {
-        ActivityStream stream = new ActivityStream();
-        new Actions(Driver.getDriver()).moveToElement(stream.cancelButton).perform();
-        stream.cancelButton.click();
+        new Actions(Driver.getDriver()).moveToElement(Pages.getStream().cancelButton).perform();
+        Pages.getStream().cancelButton.click();
     }
 
 
     @Then("helpdesk should see the poll canceled")
     public void helpdeskShouldSeeThePollCanceled() {
-        ActivityStream stream = new ActivityStream();
-        Assert.assertFalse(stream.questionBoxForPollCreation.isDisplayed());
+        Assert.assertFalse(Pages.getStream().questionBoxForPollCreation.isDisplayed());
     }
 }

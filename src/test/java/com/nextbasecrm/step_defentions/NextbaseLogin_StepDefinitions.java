@@ -5,6 +5,7 @@ import com.nextbasecrm.pages.Authorization;
 import com.nextbasecrm.utilities.BrowserUtils;
 import com.nextbasecrm.utilities.ConfiReader;
 import com.nextbasecrm.utilities.Driver;
+import com.nextbasecrm.utilities.Pages;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -22,8 +23,7 @@ public class NextbaseLogin_StepDefinitions {
     }
     @When("Helper user click on Login")
     public void helper_user_click_on_login() {
-        Authorization page = new Authorization();
-        page.loginButton.click();
+        Pages.getAuthorization().loginButton.click();
     }
     @Then("User should see in title {string}")
     public void user_should_see_in_title(String string) {
@@ -46,8 +46,7 @@ public class NextbaseLogin_StepDefinitions {
     }
     @When("hr user click on Login")
     public void hr_user_click_on_login() {
-      Authorization page = new Authorization();
-      page.loginButton.click();
+        Pages.getAuthorization().loginButton.click();
     }
     @Then("User should see title {string}")
     public void userShouldSeeTitle(String arg0) {
@@ -72,8 +71,8 @@ public class NextbaseLogin_StepDefinitions {
     }
     @When("marketing user click on Login")
     public void marketing_user_click_on_login() {
-        Authorization page = new Authorization();
-        page.loginButton.click();
+
+        Pages.getAuthorization().loginButton.click();
     }
     @Then("marketing User should see title {string}")
     public void marketing_user_should_see_title(String string) {
@@ -100,8 +99,8 @@ public class NextbaseLogin_StepDefinitions {
     }
     @When("user click on Login")
     public void user_click_on_login() {
-        Authorization page = new Authorization();
-        page.loginButton.click();
+
+        Pages.getAuthorization().loginButton.click();
     }
     @Then("User should see {string} massage displayed")
     public void user_should_see_massage_displayed(String string) {
@@ -128,25 +127,23 @@ public class NextbaseLogin_StepDefinitions {
     }
     @When("Helper user click on Remember me on this compute check box")
     public void helper_user_click_on_remember_me_on_this_compute_check_box() {
-        Authorization page = new Authorization();
-        page.rememberMeCheckBox.click();
+
+        Pages.getAuthorization().rememberMeCheckBox.click();
     }
     @When("Helper user login")
     public void helper_user_login() {
-        Authorization page = new Authorization();
-        page.loginButton.click();
+        Pages.getAuthorization().loginButton.click();
     }
     @When("Helper user log out")
     public void helper_user_log_out() {
-        ActivityStream page = new ActivityStream();
-        page.userInfDiv.click();
-        page.Logout.click();
+        Pages.getStream().userInfDiv.click();
+        Pages.getStream().Logout.click();
     }
     @When("Helper user empty the user clear user name and password")
     public void helper_user_empty_the_user_clear_user_name_and_password() {
-      Authorization page = new Authorization();
-      page.userNameInputBox.clear();
-      page.passwordInputBox.clear();
+
+      Pages.getAuthorization().userNameInputBox.clear();
+      Pages.getAuthorization().passwordInputBox.clear();
 
     }
     @When("Helper user refresh the page")
@@ -156,8 +153,8 @@ public class NextbaseLogin_StepDefinitions {
     }
     @Then("Helper  user should be able to see the username on the username box")
     public void helper_user_should_be_able_to_see_the_username_on_the_username_box() {
-        Authorization page = new Authorization();
-        String actualUserName = page.userNameInputBox.getAttribute("value");
+
+        String actualUserName = Pages.getAuthorization().userNameInputBox.getAttribute("value");
         String expectedUserName = ConfiReader.getProperty("helperUserName");
        Assert.assertEquals(actualUserName,expectedUserName);
        Driver.closeDriver();
@@ -172,8 +169,8 @@ public class NextbaseLogin_StepDefinitions {
 
     @When("user click on FORGOT YOUR PASSWORD link")
     public void user_click_on_forgot_your_password_link() {
-      Authorization page = new Authorization();
-      page.forgotMyPasswordLink.click();
+
+        Pages.getAuthorization().forgotMyPasswordLink.click();
     }
     @Then("user should see the {string} title")
     public void user_should_see_the_title(String string) {

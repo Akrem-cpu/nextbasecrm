@@ -2,8 +2,8 @@ package com.nextbasecrm.step_defentions;
 
 import com.github.javafaker.Faker;
 import com.nextbasecrm.pages.ActivityStream;
-import com.nextbasecrm.utilities.BrowserUtils;
 import com.nextbasecrm.utilities.Driver;
+import com.nextbasecrm.utilities.Pages;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -18,9 +18,8 @@ public class PostReactFunctionality {
 
     @When("hr user click on like button for the first post user see")
     public void hr_user_click_on_like_button_for_the_first_post_user_see() {
-        ActivityStream stream = new ActivityStream();
-        if(!stream.firstPostToLikeComfrmation.isDisplayed()){
-            stream.likeButtonForTheFirstPost.click();
+        if(!Pages.getStream().firstPostToLikeComfrmation.isDisplayed()){
+            Pages.getStream().likeButtonForTheFirstPost.click();
         }
     }
     @Then("hr user should be able to see a thumps up with {string} text")
@@ -37,9 +36,8 @@ public class PostReactFunctionality {
      */
     @When("marketing user click on like button for the first post user see")
     public void marketing_user_click_on_like_button_for_the_first_post_user_see() {
-        ActivityStream stream = new ActivityStream();
-        if(!stream.firstPostToLikeComfrmation.isDisplayed()){
-            stream.likeButtonForTheFirstPost.click();
+        if(!Pages.getStream().firstPostToLikeComfrmation.isDisplayed()){
+            Pages.getStream().likeButtonForTheFirstPost.click();
         }
 
 
@@ -47,8 +45,8 @@ public class PostReactFunctionality {
     }
     @Then("marketing user should be able to see a thumps up with {string} text")
     public void marketing_user_should_be_able_to_see_a_thumps_up_with_text(String string) {
-        ActivityStream stream = new ActivityStream();
-        String actualText = stream.firstPostToLikeComfrmation.getText();
+
+        String actualText = Pages.getStream().firstPostToLikeComfrmation.getText();
         Assert.assertTrue(actualText.contains(string));
 
     }
@@ -58,15 +56,13 @@ public class PostReactFunctionality {
      */
     @When("helpdesk user click on like button for the first post user see")
     public void helpdesk_user_click_on_like_button_for_the_first_post_user_see() {
-        ActivityStream stream = new ActivityStream();
-        if(!stream.firstPostToLikeComfrmation.isDisplayed()){
-            stream.likeButtonForTheFirstPost.click();
+        if(!Pages.getStream().firstPostToLikeComfrmation.isDisplayed()){
+            Pages.getStream().likeButtonForTheFirstPost.click();
         }
     }
     @Then("helpdesk user should be able to see a thumps up with {string} text")
     public void helpdesk_user_should_be_able_to_see_a_thumps_up_with_text(String string) {
-        ActivityStream stream = new ActivityStream();
-        String actualText = stream.firstPostToLikeComfrmation.getText();
+        String actualText =Pages.getStream().firstPostToLikeComfrmation.getText();
         Assert.assertTrue(actualText.contains(string));
 
     }
@@ -78,16 +74,16 @@ public class PostReactFunctionality {
 
     @When("helpdesk user click on follow button")
     public void helpdesk_user_click_on_follow_button() {
-        ActivityStream stream = new ActivityStream();
-        if(stream.followButtonOnTheFirstMostRecentPost.getText().equals("Unfollow")){
-            stream.followButtonOnTheFirstMostRecentPost.click();
+
+        if(Pages.getStream().followButtonOnTheFirstMostRecentPost.getText().equals("Unfollow")){
+            Pages.getStream().followButtonOnTheFirstMostRecentPost.click();
         }
-        stream.followButtonOnTheFirstMostRecentPost.click();
+        Pages.getStream().followButtonOnTheFirstMostRecentPost.click();
     }
     @Then("helpdesk should see {string} text")
     public void helpdesk_should_see_text(String string) {
-        ActivityStream stream = new ActivityStream();
-        String actualText = stream.followButtonOnTheFirstMostRecentPost.getText();
+
+        String actualText = Pages.getStream().followButtonOnTheFirstMostRecentPost.getText();
         Assert.assertEquals("there is diff b/n actual and expected this is the actual"+actualText,string,actualText);
     }
 //Todo this TS keep failing when run together fix it.
@@ -96,16 +92,14 @@ public class PostReactFunctionality {
      */
     @When("helpdesk user click on the view icon")
     public void helpdesk_user_click_on_the_view_icon() {
-        ActivityStream stream = new ActivityStream();
-        stream.viewIconForTheMostRecentPost.click();
+        Pages.getStream().viewIconForTheMostRecentPost.click();
 
     }
     @Then("helpdesk should see the people who viewed the post")
     public void helpdesk_should_see_the_people_who_viewed_the_post() {
-        ActivityStream stream = new ActivityStream();
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
-        wait.until(ExpectedConditions.visibilityOf(stream.peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton));
-        String actualText = stream.peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton.getText();
+        wait.until(ExpectedConditions.visibilityOf(Pages.getStream().peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton));
+        String actualText = Pages.getStream().peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton.getText();
         String expectedText = "Views";
         Assert.assertEquals(actualText,expectedText);
     }
@@ -115,18 +109,17 @@ public class PostReactFunctionality {
      */
     @When("helpdesk user click the star icon to save the post to favorites")
     public void helpdesk_user_click_the_star_icon_to_save_the_post_to_favorites() {
-      ActivityStream stream = new ActivityStream();
-      String checkUp = stream.addToFavoritesButtonForRecentPost.getAttribute("title");
+
+      String checkUp = Pages.getStream().addToFavoritesButtonForRecentPost.getAttribute("title");
       if(checkUp.equals("Remove from favorites")){
-          stream.addToFavoritesButtonForRecentPost.click();
+          Pages.getStream().addToFavoritesButtonForRecentPost.click();
       }
-      stream.addToFavoritesButtonForRecentPost.click();
-      new  WebDriverWait(Driver.getDriver(),10).until(ExpectedConditions.attributeToBe(stream.addToFavoritesButtonForRecentPost,"title","Remove from favorites"));
+        Pages.getStream().addToFavoritesButtonForRecentPost.click();
+      new  WebDriverWait(Driver.getDriver(),10).until(ExpectedConditions.attributeToBe(Pages.getStream().addToFavoritesButtonForRecentPost,"title","Remove from favorites"));
     }
     @Then("helpdesk user should see the post added to favorites post")
     public void helpdesk_user_should_see_the_post_added_to_favorites_post() {
-        ActivityStream stream = new ActivityStream();
-        String actualText = stream.addToFavoritesButtonForRecentPost.getAttribute("title");
+        String actualText = Pages.getStream().addToFavoritesButtonForRecentPost.getAttribute("title");
         String expectedText = "Remove from favorites";
         Assert.assertEquals(actualText,expectedText);
 
@@ -138,28 +131,25 @@ public class PostReactFunctionality {
 
     @When("helpdesk user click on the comment box")
     public void helpdesk_user_click_on_the_comment_box() {
-        ActivityStream stream = new ActivityStream();
-        stream.commentBoxOnTheMostRecentPost.click();
+        Pages.getStream().commentBoxOnTheMostRecentPost.click();
     }
     @Then("helpdesk user write a comment")
     public void helpdesk_user_write_a_comment() {
-        ActivityStream stream = new ActivityStream();
-        Driver.getDriver().switchTo().frame(stream.iframeForCommentText);
-        stream.textBoxInsideCommentIframe.sendKeys(new Faker().name().fullName());
+        Driver.getDriver().switchTo().frame(Pages.getStream().iframeForCommentText);
+        Pages.getStream().textBoxInsideCommentIframe.sendKeys(new Faker().name().fullName());
         Driver.getDriver().switchTo().defaultContent();
     }
     @Then("helpdesk user click on send button")
     public void helpdesk_user_click_on_send_button() {
-        ActivityStream stream = new ActivityStream();
+
         Actions actions = new Actions(Driver.getDriver());
-        actions.moveToElement(stream.sendCommentForTheMostRecentPost).perform();
-        new WebDriverWait(Driver.getDriver(),14).until(ExpectedConditions.visibilityOf(stream.sendCommentForTheMostRecentPost));
-        stream.sendCommentForTheMostRecentPost.click();
+        actions.moveToElement(Pages.getStream().sendCommentForTheMostRecentPost).perform();
+        new WebDriverWait(Driver.getDriver(),14).until(ExpectedConditions.visibilityOf(Pages.getStream().sendCommentForTheMostRecentPost));
+        Pages.getStream().sendCommentForTheMostRecentPost.click();
     }
     @Then("helpdesk user should see the comment")
     public void helpdesk_user_should_see_the_comment() {
-        ActivityStream stream = new ActivityStream();
-        Assert.assertTrue(stream.firstCommentButtonForMostRecentPost.isDisplayed());
+        Assert.assertTrue(Pages.getStream().firstCommentButtonForMostRecentPost.isDisplayed());
     }
     /**
      *    Scenario: users cancel a comment with Cancel button
@@ -167,16 +157,14 @@ public class PostReactFunctionality {
 
     @Then("helpdesk user click cancel button")
     public void helpdesk_user_click_cancel_button() {
-        ActivityStream stream = new ActivityStream();
-       new  WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(stream.cancelButtonForCommentForRecentPost));
-        new Actions(Driver.getDriver()).moveToElement(stream.cancelButtonForCommentForRecentPost).perform();
-        stream.cancelButtonForCommentForRecentPost.click();
+       new  WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(Pages.getStream().cancelButtonForCommentForRecentPost));
+        new Actions(Driver.getDriver()).moveToElement(Pages.getStream().cancelButtonForCommentForRecentPost).perform();
+        Pages.getStream().cancelButtonForCommentForRecentPost.click();
     }
     @Then("helpdesk user should see the comment canceled")
     public void helpdesk_user_should_see_the_comment_canceled() {
-        ActivityStream stream = new ActivityStream();
-        new  WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.invisibilityOf(stream.cancelButtonForCommentForRecentPost));
-        Assert.assertFalse(stream.sendCommentForTheMostRecentPost.isDisplayed());
+        new  WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.invisibilityOf(Pages.getStream().cancelButtonForCommentForRecentPost));
+        Assert.assertFalse(Pages.getStream().sendCommentForTheMostRecentPost.isDisplayed());
     }
 
 
