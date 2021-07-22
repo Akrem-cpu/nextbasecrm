@@ -118,7 +118,6 @@ public class MessageFunctionality_StepDefinitions {
 
     @And("helpdesk click on link icon")
     public void helpdeskClickOnLinkIcon() {
-
         Pages.getStream().AddLinkButton.click();
     }
 

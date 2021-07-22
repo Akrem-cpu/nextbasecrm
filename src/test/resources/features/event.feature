@@ -1,3 +1,4 @@
+@wip
 Feature: 9. As a user, I should be able to send an event.
 
 
@@ -40,7 +41,7 @@ Feature: 9. As a user, I should be able to send an event.
     And helpdesk user clicks on give date needed"12"
     And helpdesk user click on set time for the end time
     Then helpdesk user should see the date changed start time "9" end time "12"
-  @wip
+
    Scenario:  users can check ""All day""
     Given helpdesk user is login in to the helpdesk account
     When helpdesk user click on event

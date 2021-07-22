@@ -17,8 +17,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Eventfuctionaltiy_StepDefinitions {
     String data = new Faker().name().firstName();
-    String actualStartTime ;
-    String actualEndTime;
+    String actualEndTime = "";
+    String actualStartTime = "";
+
 
 
     /**
@@ -109,10 +110,11 @@ public class Eventfuctionaltiy_StepDefinitions {
 
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(),15);
         wait.until(ExpectedConditions.visibilityOf(Pages.getStream().startTimeBoxForEvenCreation));
+        Pages.closeStream();
         Pages.getStream().startTimeBoxTOChangeTime.clear();
         Pages.getStream().startTimeBoxTOChangeTime.sendKeys(arg0+ Keys.ENTER);
-        this.actualStartTime =Pages.getStream().timeTextForStartTime.getText();
-        String a = Driver.getDriver().findElement(By.xpath("//div[@class='bxc-title'][1]")).getAttribute("innerText");
+        actualStartTime = Driver.getDriver().findElement(By.xpath("//div[@class='bxc-title'][1]")).getAttribute("innerText");
+
     }
     @And("helpdesk user click on set time for the start time")
     public void helpdeskUserClickOnSetTime() {
@@ -130,20 +132,22 @@ public class Eventfuctionaltiy_StepDefinitions {
     public void helpdeskUserClicksOnGiveDateNeeded(String arg0) {
         Pages.getStream().endTimeBoxToChangeTime.clear();
         Pages.getStream().endTimeBoxToChangeTime.sendKeys(arg0+Keys.ENTER);
-        this.actualEndTime =Pages.getStream().timeTextForEndTime.getText();
+
+
 
     }
     @And("helpdesk user click on set time for the end time")
     public void helpdeskUserClickOnSetTimeForTheEndTime() {
         Pages.getStream().setEndTimeForEvenCreation.click();
+        actualEndTime = Driver.getDriver().findElement(By.xpath("//div[@id='feed_cal_event_to_timecal_3Jcl_div']")).getAttribute("innerText");
 
     }
 
 
     @Then("helpdesk user should see the date changed start time {string} end time {string}")
     public void helpdeskUserShouldSeeTheDateChangedStartTimeEndTime(String arg0, String arg1) {
-        System.out.println(actualStartTime +" actual = expected =" +arg0);
-        System.out.println(actualStartTime +" actual = expected =" +arg1);
+        System.out.println(actualStartTime);
+        System.out.println(actualEndTime);
         Assert.assertTrue(actualStartTime.contains(arg0));
         Assert.assertTrue(actualEndTime.contains(arg1));
 
