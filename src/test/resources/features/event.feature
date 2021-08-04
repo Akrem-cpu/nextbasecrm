@@ -1,4 +1,4 @@
-@wip
+
 Feature: 9. As a user, I should be able to send an event.
 
 

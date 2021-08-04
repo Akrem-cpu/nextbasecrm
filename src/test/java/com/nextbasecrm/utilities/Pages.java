@@ -11,7 +11,7 @@ public class Pages {
 
 
 
-    public static ActivityStream getStream() {
+    public synchronized static ActivityStream getStream() {
         if(stream==null){
             stream = new ActivityStream();
         }
@@ -19,7 +19,7 @@ public class Pages {
         return stream;
     }
 
-    public static Authorization getAuthorization() {
+    public synchronized static Authorization getAuthorization() {
         if(authorization == null){
             authorization = new Authorization();
         }

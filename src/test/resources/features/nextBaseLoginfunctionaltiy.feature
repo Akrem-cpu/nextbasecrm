@@ -2,7 +2,7 @@
 Feature: 1) nextbasecrm login functionality
     User story : As a user, I should be able to login to the app
 
-  Scenario:  As a Helper user, I should be able to login to the app
+  Scenario:As a Helper user, I should be able to login to the app
 
     When User input valid Credentials
     And Helper user click on Login
@@ -31,6 +31,7 @@ Feature: 1) nextbasecrm login functionality
     And Helper user empty the user clear user name and password
     And Helper user refresh the page
     Then Helper  user should be able to see the username on the username box
+
   Scenario: verify users can check ""Remember me on this computer"" option
     When user click on FORGOT YOUR PASSWORD link
     Then user should see the "Get Password" title

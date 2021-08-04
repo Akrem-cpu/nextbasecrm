@@ -2,6 +2,7 @@ package com.nextbasecrm.step_defentions;
 
 import com.github.javafaker.Faker;
 import com.nextbasecrm.pages.ActivityStream;
+import com.nextbasecrm.utilities.BrowserUtils;
 import com.nextbasecrm.utilities.Driver;
 import com.nextbasecrm.utilities.Pages;
 import io.cucumber.java.en.Then;
@@ -97,8 +98,7 @@ public class PostReactFunctionality {
     }
     @Then("helpdesk should see the people who viewed the post")
     public void helpdesk_should_see_the_people_who_viewed_the_post() {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
-        wait.until(ExpectedConditions.visibilityOf(Pages.getStream().peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton));
+
         String actualText = Pages.getStream().peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton.getText();
         String expectedText = "Views";
         Assert.assertEquals(actualText,expectedText);
@@ -141,7 +141,7 @@ public class PostReactFunctionality {
     }
     @Then("helpdesk user click on send button")
     public void helpdesk_user_click_on_send_button() {
-
+        BrowserUtils.sleep(1);
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(Pages.getStream().sendCommentForTheMostRecentPost).perform();
         new WebDriverWait(Driver.getDriver(),14).until(ExpectedConditions.visibilityOf(Pages.getStream().sendCommentForTheMostRecentPost));

@@ -1,12 +1,9 @@
 package com.nextbasecrm.pages;
 
 import com.nextbasecrm.utilities.Driver;
-import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.security.PublicKey;
 import java.util.List;
 
 public class ActivityStream {

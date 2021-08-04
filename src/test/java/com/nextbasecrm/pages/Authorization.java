@@ -35,6 +35,7 @@ public class Authorization {
 
 
     public static void inputValidCredentials(String keyword ){
+
         Pages.getAuthorization().userNameInputBox.sendKeys(ConfiReader.getProperty(keyword));
         Pages.getAuthorization().passwordInputBox.sendKeys(ConfiReader.getProperty("password"));
 
