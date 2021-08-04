@@ -1,4 +1,4 @@
-@regression @a
+@regression
 Feature:7) As a user, I should be able to do
   see posts from homepage.
 
@@ -24,7 +24,7 @@ Feature:7) As a user, I should be able to do
       Given helpdesk user is login in to the helpdesk account
       When helpdesk user click on follow button
       Then helpdesk should see "Unfollow" text
-
+  @a
       Scenario: users can see who are the people viewed a post with eye icon
         Given helpdesk user is login in to the helpdesk account
         When helpdesk user click on the view icon

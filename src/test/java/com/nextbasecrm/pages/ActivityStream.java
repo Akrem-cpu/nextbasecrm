@@ -112,7 +112,7 @@ public class ActivityStream {
     @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//span[@class='feed-content-view-cnt-wrap']")
     public WebElement viewIconForTheMostRecentPost;
 
-    @FindBy(xpath = "//div[@Class='popup-window popup-window-contentview popup-window-close-animation-opacity']//span[.='Views']")
+    @FindBy(xpath = "//div[@class='popup-window popup-window-contentview popup-window-close-animation-opacity']//a/span[2]")
     public WebElement peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton;
 
     @FindBy(xpath = "//div[@class='workarea-content-paddings']//div[@class='feed-item-wrap'][1]//div[contains(@class,'feed-post-important-switch')]")

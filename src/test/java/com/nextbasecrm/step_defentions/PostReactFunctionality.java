@@ -94,11 +94,12 @@ public class PostReactFunctionality {
     @When("helpdesk user click on the view icon")
     public void helpdesk_user_click_on_the_view_icon() {
         Pages.getStream().viewIconForTheMostRecentPost.click();
+        BrowserUtils.sleep(5);
 
     }
     @Then("helpdesk should see the people who viewed the post")
     public void helpdesk_should_see_the_people_who_viewed_the_post() {
-
+        Assert.assertTrue(Pages.getStream().peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton.isDisplayed());
         String actualText = Pages.getStream().peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton.getText();
         String expectedText = "Views";
         Assert.assertEquals(actualText,expectedText);
