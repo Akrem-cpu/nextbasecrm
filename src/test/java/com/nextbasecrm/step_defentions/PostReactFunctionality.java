@@ -99,7 +99,7 @@ public class PostReactFunctionality {
     }
     @Then("helpdesk should see the people who viewed the post")
     public void helpdesk_should_see_the_people_who_viewed_the_post() {
-        Assert.assertTrue(Pages.getStream().peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton.isDisplayed());
+        BrowserUtils.fluentWait(Pages.getStream().peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton,30);
         String actualText = Pages.getStream().peopleThatSeenThePostOnlyLoadOnThePageAfterYouClickOnTheViewButton.getText();
         String expectedText = "Views";
         Assert.assertEquals(actualText,expectedText);

@@ -38,11 +38,11 @@ public class BrowserUtils {
       waitFor().until(ExpectedConditions.titleIs(title));
 
     }
-    public static WebElement fluentWait(WebElement ele){
+    public static WebElement fluentWait(WebElement ele, int second){
 
         Wait<WebDriver> wait = new FluentWait<>(Driver.getDriver())
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofSeconds(2))
+                .withTimeout(Duration.ofSeconds(second))
+                .pollingEvery(Duration.ofSeconds(5))
                 .ignoring(NoSuchElementException.class);
 
         WebElement element = wait.until(new Function<WebDriver, WebElement>() {
@@ -52,8 +52,8 @@ public class BrowserUtils {
             }
         });
 
-     if (ele.isDisplayed()){
-         return ele;
+     if (element.isDisplayed()){
+         return element;
      }
      throw new NoSuchElementException("element found");
 
