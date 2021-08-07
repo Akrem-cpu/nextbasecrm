@@ -1,4 +1,4 @@
-@smoke @regression
+@smoke
 Feature: 1) nextbasecrm login functionality
     User story : As a user, I should be able to login to the app
 
