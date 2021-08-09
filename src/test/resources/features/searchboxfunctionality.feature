@@ -1,4 +1,4 @@
-@regression
+
 Feature: "3. As a user, I should be able to search people,
   document and more from search box"
 
