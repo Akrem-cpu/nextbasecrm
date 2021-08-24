@@ -1,4 +1,4 @@
-@regression
+
 Feature:5)As a user, I should be able to vote for a poll
 
 

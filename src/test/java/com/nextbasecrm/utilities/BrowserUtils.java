@@ -1,6 +1,5 @@
 package com.nextbasecrm.utilities;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,8 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.security.Key;
 import java.time.Duration;
 import java.util.function.Function;
 
@@ -44,6 +41,7 @@ public class BrowserUtils {
                 .withTimeout(Duration.ofSeconds(second))
                 .pollingEvery(Duration.ofSeconds(5))
                 .ignoring(NoSuchElementException.class);
+
 
         WebElement element = wait.until(new Function<WebDriver, WebElement>() {
             @Override

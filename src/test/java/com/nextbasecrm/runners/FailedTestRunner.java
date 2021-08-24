@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features ="src/test/resources/features",
+        features ="@target/rerun.txt",
         glue = "com/nextbasecrm/step_defentions"
 
 )

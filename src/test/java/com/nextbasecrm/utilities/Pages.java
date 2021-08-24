@@ -6,31 +6,31 @@ import com.nextbasecrm.pages.Authorization;
 public class Pages {
     private Pages(){}
 
-   private static ActivityStream stream;
-   private static Authorization authorization;
+   private static ThreadLocal<ActivityStream> streamPool = new ThreadLocal<>();
+   private static ThreadLocal<Authorization> authorizationPool = new ThreadLocal<>();
 
 
 
     public synchronized static ActivityStream getStream() {
-        if(stream==null){
-            stream = new ActivityStream();
+        if(streamPool.get()==null){
+            streamPool.set(new ActivityStream());
         }
 
-        return stream;
+        return streamPool.get();
     }
 
     public synchronized static Authorization getAuthorization() {
-        if(authorization == null){
-            authorization = new Authorization();
+        if(authorizationPool.get() == null){
+            authorizationPool.set(new Authorization());
         }
-        return   authorization;
+        return   authorizationPool.get();
     }
 
     public static void closeAuthorization(){
-        authorization = null;
+        authorizationPool.set(null );
     }
     public static void closeStream(){
-        stream = null;
+        streamPool.set(null);
     }
 
 }

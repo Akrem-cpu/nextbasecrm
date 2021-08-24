@@ -1,4 +1,4 @@
-@smoke @regression @wip
+
 Feature: 2) As a user, I should be able to send message
 
   Scenario: hr users  send message with ""MESSAGE"" tab
