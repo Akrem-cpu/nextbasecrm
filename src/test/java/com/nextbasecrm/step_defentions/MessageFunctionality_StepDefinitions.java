@@ -30,6 +30,7 @@ public class MessageFunctionality_StepDefinitions {
         Pages.getAuthorization().loginButton.click();
 
 
+
     }
     @Then("hr Type {string} in the Message box")
     public synchronized void hr_type_in_the_message_box(String string) {

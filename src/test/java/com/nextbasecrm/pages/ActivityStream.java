@@ -2,8 +2,8 @@ package com.nextbasecrm.pages;
 
 import com.nextbasecrm.utilities.Driver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.*;
+
 import java.util.List;
 
 public class ActivityStream {
@@ -161,11 +161,17 @@ public class ActivityStream {
     public WebElement timeTextForStartTime;
 
     @FindBy(xpath = "//div[@class='bxc-title'][2]")
-    public WebElement timeTextForEndTime;
+    public List<WebElement> timeTextForEndTime;
 
     @FindBy(xpath = "//input[@id='event-full-daycal_3Jcl']")
     public WebElement allDayButtonForEventCreation;
+    @FindBys({@FindBy (how = How.ID_OR_NAME ,using = "dlkasjf"),@FindBy(className = "kjahsdf")})
+    public WebElement hello;
 
+    public static void main(String[] args) {
+        ActivityStream activityStream = new ActivityStream();
+        System.out.println("activityStream.timeTextForEndTime.size() = " + activityStream.timeTextForEndTime.size());
+    }
 
 
 

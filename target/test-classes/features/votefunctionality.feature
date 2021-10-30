@@ -1,4 +1,4 @@
-
+@regression
 Feature:5)As a user, I should be able to vote for a poll
 
 
@@ -42,3 +42,7 @@ Feature:5)As a user, I should be able to vote for a poll
   Scenario:only vote owner stop the poll with STOP button
     Given marketing user is login in to the marketing account
     Then marketing user should see "STOP" text on the poll that user created
+
+
+
+

@@ -8,6 +8,9 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.sql.*;
 
 public class Hooks {
@@ -24,7 +27,12 @@ public class Hooks {
         }
 
 
-       if(Pages.getStream() !=null){
+        System.out.println("scenario.getStatus().toString() = " + scenario.getStatus().toString());
+        System.out.println("scenario.getName() = " + scenario.getName());
+        System.out.println("scenario.getId() = " + scenario.getId());
+
+
+        if(Pages.getStream() !=null){
            Pages.closeStream();
        }
        if(Pages.getAuthorization() != null){

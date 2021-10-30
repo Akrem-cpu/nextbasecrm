@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Authorization {
+public class Authorization  {
 
     public Authorization(){
         PageFactory.initElements(Driver.getDriver(),this);
