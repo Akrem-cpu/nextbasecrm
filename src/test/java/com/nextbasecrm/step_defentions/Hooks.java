@@ -1,5 +1,6 @@
 package com.nextbasecrm.step_defentions;
 
+import com.nextbasecrm.utilities.ConfiReader;
 import com.nextbasecrm.utilities.Driver;
 import com.nextbasecrm.utilities.Pages;
 import io.cucumber.java.After;
@@ -11,12 +12,16 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 public class Hooks {
     @Before
-    public void setup(){
+    public void setup()  {
         Driver.getDriver().get("https://login2.nextbasecrm.com/");
+        Properties properties = new Properties();
+
     }
 
     @After

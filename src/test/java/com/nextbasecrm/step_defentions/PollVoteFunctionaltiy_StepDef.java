@@ -26,7 +26,7 @@ public class PollVoteFunctionaltiy_StepDef {
     }
     @Then("hr user should see {string} text")
     public void hr_user_should_see_text(String string) {
-        new WebDriverWait(Driver.getDriver(),15).until(ExpectedConditions.visibilityOf(Pages.getStream().voteAgainTxt));
+
         String actualText = Pages.getStream().voteAgainTxt.getText();
         Assert.assertEquals(actualText,string);
 

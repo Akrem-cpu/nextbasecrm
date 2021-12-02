@@ -10,6 +10,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
 
 public class NextbaseLogin_StepDefinitions {
 
@@ -131,7 +138,7 @@ public class NextbaseLogin_StepDefinitions {
     }
     @When("Helper user login")
     public synchronized void helper_user_login() {
-        Pages.getAuthorization().loginButton.click();
+    Pages.getAuthorization().loginButton.click();
     }
     @When("Helper user log out")
     public synchronized void helper_user_log_out() {

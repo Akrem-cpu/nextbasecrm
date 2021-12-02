@@ -14,6 +14,7 @@ public class Pages {
     public synchronized static ActivityStream getStream() {
         if(streamPool.get()==null){
             streamPool.set(new ActivityStream());
+
         }
 
         return streamPool.get();
@@ -32,5 +33,12 @@ public class Pages {
     public static void closeStream(){
         streamPool.set(null);
     }
+
+    public static  void main(String[] args) {
+
+    }
+ 
+
+
 
 }
